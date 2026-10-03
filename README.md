@@ -1,80 +1,63 @@
-# Final Project - Sistem E-Voting
+# Laravel E-Voting System
 
-<p align="center">
-  <a href="https://laravel.com" target="_blank">
-    <img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo">
-  </a>
-</p>
+A web application for managing a small, role-based election. The current code supports administrator and voter flows: candidate management, voter validation, ballot submission, and viewing election results.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Laravel-10.x-red" alt="Laravel Version">
-  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
-</p>
+## Features
 
-## Deskripsi
-Sistem E-Voting berbasis web yang dibangun menggunakan Laravel. Aplikasi ini memudahkan proses pemilihan secara digital, mulai dari pendaftaran kandidat, validasi pemilih, hingga rekapitulasi hasil suara secara real-time. Cocok digunakan untuk pemilihan ketua OSIS, BEM, organisasi, dan lain-lain.
+- Laravel authentication and email verification
+- Administrator and voter dashboards
+- Candidate management, including candidate photos
+- Voter validation by an administrator
+- One recorded vote per validated voter
+- Election result summaries
 
-## Table of Contents
-- [Fitur](#fitur)
-- [Instalasi](#instalasi)
-- [Penggunaan](#penggunaan)
-- [Kontribusi](#kontribusi)
-- [Lisensi](#lisensi)
-- [Credit](#credit)
+This is a learning application. Review its election rules, access controls, and operational security before using it for a real election.
 
-## Fitur
-- Autentikasi multi-role (admin, pemilih)
-- Validasi pemilih dan status voting
-- Manajemen kandidat (tambah, hapus, upload foto)
-- Dashboard statistik hasil voting
-- Rekapitulasi suara real-time
-- Notifikasi dan feedback interaktif
-- Responsive design (mobile & desktop)
+## Stack
 
-## Instalasi
-1. **Clone repository:**
-   ```bash
-   git clone <repo-url>
-   ```
-2. **Masuk ke direktori project:**
-   ```bash
-   cd <nama-folder>
-   ```
-3. **Install dependencies:**
-   ```bash
-   composer install
-   npm install
-   ```
-4. **Copy file .env dan konfigurasi:**
-   ```bash
-   cp .env.example .env
-   # Edit konfigurasi database dan environment sesuai kebutuhan
-   ```
-5. **Generate key dan migrate database:**
-   ```bash
-   php artisan key:generate
-   php artisan migrate
-   ```
-6. **Jalankan server:**
-   ```bash
-   php artisan serve
-   ```
+- PHP 8.2+
+- Laravel 12
+- SQLite or another database supported by Laravel
+- Node.js and npm for frontend assets
 
-## Penggunaan
-- Akses aplikasi di [http://localhost:8000](http://localhost:8000)
-- Register/login sesuai role (admin, kandidat, pemilih)
-- Admin dapat mengelola kandidat dan memvalidasi pemilih
-- Pemilih dapat memilih kandidat yang tersedia satu kali
-- Lihat hasil voting secara real-time di dashboard
+## Local setup
 
-## Kontribusi
-Kontribusi sangat terbuka! Silakan fork repository ini, buat branch baru untuk fitur atau perbaikan, lalu ajukan pull request. Pastikan kode sudah teruji sebelum mengajukan PR.
+    git clone https://github.com/Rimaestro/laravel-e-voting-system.git
+    cd laravel-e-voting-system
+    composer install
+    npm install
 
-## Lisensi
-Project ini menggunakan lisensi MIT. Lihat file [LICENSE](LICENSE) untuk detail.
+Copy .env.example to .env and configure the database, then initialize the application:
 
-## Credit
-- [Laravel](https://laravel.com/)
-- [Blade UI Kit](https://blade-ui-kit.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Kontributor lain jika ada]
+    # Windows PowerShell
+    Copy-Item .env.example .env
+
+    # macOS/Linux
+    # cp .env.example .env
+
+    php artisan key:generate
+    php artisan migrate --seed
+    npm run build
+    php artisan serve
+
+Open http://127.0.0.1:8000. The seeder creates a generic development user; set its role and credentials locally before trying administrator-specific flows.
+
+## Development
+
+Run the Laravel test suite with:
+
+    php artisan test
+
+## Repository layout
+
+- app/Http/Controllers/ — authentication, candidate, voter, and voting flows
+- app/Models/ — election, candidate, voter, and vote records
+- database/migrations/ — database schema
+- resources/views/ — Blade interface
+- routes/ — web and authentication routes
+- tests/ — Laravel feature and unit tests
+
+## License
+
+See LICENSE, if present. If no license file is included, reuse and redistribution are not granted by this repository.
+
