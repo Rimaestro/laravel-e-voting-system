@@ -29,11 +29,7 @@ This is a learning application. Review its election rules, access controls, and 
 
 Copy .env.example to .env and configure the database, then initialize the application:
 
-    # Windows PowerShell
-    Copy-Item .env.example .env
-
-    # macOS/Linux
-    # cp .env.example .env
+    cp .env.example .env
 
     php artisan key:generate
     php artisan migrate --seed
